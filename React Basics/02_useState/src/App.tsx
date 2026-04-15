@@ -1,0 +1,67 @@
+import { useState } from "react"
+
+export default function App() {
+  const [name, setName] = useState("");
+  // name = current value of the name field, 
+  // setName = function to update the name value, 
+  // useState = hook that allows us to add state to our functional component,
+  // ("") = mekes it so that the name field is empty by default and forces it to be a string type
+  const [age, setAge] = useState<number | undefined>(undefined);
+  // <number | undefined> = specifies that the age state variable can be either a number or undefined,
+  const [users, setUsers] = useState<UserProps[]>([]);
+  const [counter, setCounter] = useState(0);
+
+  interface UserProps {
+    name: string;
+    age: number | undefined;
+  }
+
+  function saveUser() {
+    const newUser: UserProps = { name, age };
+    setUsers([...users, newUser]); // ...users = creates a new array that contains all the existing users,
+    console.log(users);
+
+    alert("User Saved!");
+    setName("");
+    setAge(undefined);
+  }
+
+  return (
+    <div>
+      <h1>Understanding useState</h1>
+
+      <hr />
+      <h1></h1>
+      <input
+        type="text" // type = specifies the type of name field, in this case it is a text input
+        placeholder="Type the user's name" // placeholder = text that appears in the name field when it is empty
+        value={name} // value = sets the value of the name field to the current value of the name state variable
+        onChange={(e) => setName(e.target.value)}
+      // onChange = event handler that is called whenever the value of the name field changes
+      // e = alias for event
+      // e.target = the element that triggered the event, in this case it is the name input field
+      // value = value of the name field
+      // setName(e.target.value) = updates the name state variable with the new value of the name field, which is accessed through e.target.value
+      />
+      <input
+        type="number"
+        placeholder="Type the user's age"
+        value={age ?? ""} // if undefined, puts an empty string
+        onChange={(e) => setAge(e.target.valueAsNumber || undefined)}
+      />
+      <button onClick={saveUser}>Save</button>
+      <h1></h1>
+      <hr />
+
+      <h3>User's List:</h3>
+      <ul>
+        {users.map((u, index) => (<li key={index}>Name: {u.name}, Age: {u.age}</li>))}
+      </ul>
+
+      <br />
+      <hr />
+      <h1>useState Counter</h1>
+      <button onClick={() => setCounter(counter + 1)}>+</button> {counter} <button onClick={() => setCounter(counter - 1)}>-</button>
+    </div>
+  )
+}
