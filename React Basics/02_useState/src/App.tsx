@@ -61,7 +61,7 @@ export default function App() {
       <br />
       <hr />
       <h1>useState Counter</h1>
-      <button onClick={() => setCounter(counter + 1)}>+</button> {counter} <button onClick={() => setCounter(counter - 1)}>-</button>
+      <button onClick={() => setCounter(counter + 1)}>+</button> {counter} <button onClick={() => counter > 0 && setCounter(counter - 1)}>-</button>
     </div>
   )
 }
