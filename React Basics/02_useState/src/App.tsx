@@ -1,6 +1,12 @@
 import { useState } from "react"
 
 export default function App() {
+  interface UserProps {
+    name: string;
+    age: number | undefined;
+  }
+
+
   const [name, setName] = useState("");
   // name = current value of the name field, 
   // setName = function to update the name value, 
@@ -9,22 +15,38 @@ export default function App() {
   const [age, setAge] = useState<number | undefined>(undefined);
   // <number | undefined> = specifies that the age state variable can be either a number or undefined,
   const [users, setUsers] = useState<UserProps[]>([]);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [userIndex, setUserIndex] = useState(-1);
+
   const [counter, setCounter] = useState(0);
 
-  interface UserProps {
-    name: string;
-    age: number | undefined;
-  }
 
-  function saveUser() {
+  function insertHandler() {
     const newUser: UserProps = { name, age };
-    setUsers([...users, newUser]); // ...users = creates a new array that contains all the existing users,
-    console.log(users);
 
-    alert("User Saved!");
+    if (isUpdating) {
+      const newUserList = users;
+      newUserList[userIndex] = newUser;
+
+      setUsers(newUserList);
+      setIsUpdating(false);
+      setUserIndex(-1);
+      /*alert("User Updated!");*/
+    } else {
+      setUsers([...users, newUser]); // ...users = creates a new array that contains all the existing users,
+      /*alert("User Saved!");*/
+    }
+
     setName("");
     setAge(undefined);
   }
+
+  function deleteHandler(index: number) {
+    const newUserList = users.filter((_, i) => i !== index);
+    setUsers(newUserList);
+    /*alert("User Deleted!");*/
+  }
+
 
   return (
     <div>
@@ -49,13 +71,17 @@ export default function App() {
         value={age ?? ""} // if undefined, puts an empty string
         onChange={(e) => setAge(e.target.valueAsNumber || undefined)}
       />
-      <button onClick={saveUser}>Save</button>
+      <button onClick={insertHandler}>{isUpdating ? "Update" : "Save"}</button>
       <h1></h1>
       <hr />
 
       <h3>User's List:</h3>
       <ul>
-        {users.map((u, index) => (<li key={index}>Name: {u.name}, Age: {u.age}</li>))}
+        {users.map((u, index) => (<li
+          key={index}>Name: {u.name}, Age: {u.age}
+          <button onClick={() => deleteHandler(index)}>Delete</button>
+          <button onClick={() => (setIsUpdating(true), setName(u.name), setAge(u.age), setUserIndex(index))}>Edit</button>
+        </li>))}
       </ul>
 
       <br />
