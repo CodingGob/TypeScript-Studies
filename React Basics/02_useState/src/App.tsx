@@ -25,16 +25,20 @@ export default function App() {
     const newUser: UserProps = { name, age };
 
     if (isUpdating) {
-      const newUserList = users;
-      newUserList[userIndex] = newUser;
+      const newUserList = [...users]; // if we copy directly with "= users", it will point to the same place and changes will affect the original at the same time
 
-      setUsers(newUserList);
+      const proceedUpdate = window.confirm("Are you sure you want to update this user?");
+      if (proceedUpdate) {
+        newUserList[userIndex] = newUser;
+        setUsers(newUserList);
+        window.alert("User Updated!");
+      }
+
       setIsUpdating(false);
       setUserIndex(-1);
-      /*alert("User Updated!");*/
     } else {
       setUsers([...users, newUser]); // ...users = creates a new array that contains all the existing users,
-      /*alert("User Saved!");*/
+      window.alert("User Saved!");
     }
 
     setName("");
@@ -42,9 +46,12 @@ export default function App() {
   }
 
   function deleteHandler(index: number) {
-    const newUserList = users.filter((_, i) => i !== index);
-    setUsers(newUserList);
-    /*alert("User Deleted!");*/
+    const proceedUpdate = window.confirm("Are you sure you want to delete this user?");
+    if (proceedUpdate) {
+      const newUserList = users.filter((_, i) => i !== index);
+      setUsers(newUserList);
+      window.alert("User Deleted!");
+    }
   }
 
 
