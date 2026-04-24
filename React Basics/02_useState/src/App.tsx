@@ -18,7 +18,7 @@ export default function App() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [userIndex, setUserIndex] = useState(-1);
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(() => 0); // useState(() => 0) = initializes the counter state variable to 0, and the function is only executed once during the initial render, which can be more efficient if the initial state is expensive to compute.
 
 
   function insertHandler() {
@@ -94,7 +94,9 @@ export default function App() {
       <br />
       <hr />
       <h1>useState Counter</h1>
-      <button onClick={() => setCounter(counter + 1)}>+</button> {counter} <button onClick={() => counter > 0 && setCounter(counter - 1)}>-</button>
+      <button onClick={() => setCounter(counter => counter + 1)}>+</button>
+      {counter}
+      <button onClick={() => counter > 0 && setCounter(counter => counter - 1)}>-</button>
     </div>
-  )
+  ) // setCounter(counter => counter + 1) = updates the counter state variable by incrementing its current value by 1, using a functional update to ensure that we are working with the most up-to-date value of counter, especially in cases where multiple updates might be queued. 
 }
