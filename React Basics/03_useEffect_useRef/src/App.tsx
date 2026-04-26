@@ -17,7 +17,6 @@ export default function App() {
     }
   }, []);
 
-
   // Whenever the taskList changes, we want to save it to localStorage, but we want to skip the first render to avoid overwriting the loaded tasks
   useEffect(() => {
     if (isFirstRender.current) {
