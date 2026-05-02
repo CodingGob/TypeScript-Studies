@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function Home() {
   const [product, setProduct] = useState("")
@@ -27,9 +27,6 @@ export function Home() {
       <button
         onClick={searchHanler}>Search</button>
       <br />
-
-      <br />
-      <Link to='/about'>About us</Link>
     </div>
   )
 }
