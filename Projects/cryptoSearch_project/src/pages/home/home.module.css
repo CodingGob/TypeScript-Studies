@@ -1,0 +1,203 @@
+.container {
+    margin: 0 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+
+}
+
+.form input {
+    width: 100%;
+    height: 44px;
+    border: 0;
+    padding: 0 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form button {
+    background: transparent;
+    transition: all .5s;
+}
+
+.form button:hover {
+    transform: scale(1.1);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 14px;
+    margin: 24px 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption {
+    font-size: 16px;
+    margin: .5em 0 .75em;
+}
+
+th {
+    color: #fff;
+}
+
+.tr {
+    background-color: #1b1c20;
+}
+
+td:first-child,
+th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+td:last-child,
+th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+table th,
+table td {
+    padding: 14px;
+    text-align: center;
+}
+
+.tdLabel {
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+}
+
+.tdProfit {
+    color: #12f98a;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.tdLoss {
+    color: #f91257;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.expandButton {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: all .5s;
+}
+
+.expandButton:hover {
+    transform: scale(1.1);
+}
+
+.name {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    transition: all .2s;
+}
+
+.name:hover {
+    transform: scale(1.03);
+}
+
+.coinLogo {
+    width: 20px;
+    height: 20px;
+    transition: all .5s;
+}
+
+.coinLogo:hover {
+    transform: scale(1.5);
+    z-index: 99;
+}
+
+
+/* < 600px */
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+        margin: 0;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1pX;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        padding: 0;
+    }
+
+    .tr {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    table td {
+        border-bottom: 1px solid rgba(221, 221, 221, .170);
+        display: block;
+        text-align: right;
+    }
+
+    .tdLabel {
+        font-weight: lighter;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .tdLabel:first-child {
+        font-weight: bold;
+    }
+
+    .tdProfit,
+    .tdLoss {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .tdProfit::before,
+    .tdLoss::before {
+        color: #fff;
+    }
+
+    table td::before {
+        content: attr(data-Label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+    td:first-child,
+    th:first-child {
+        border-radius: 0;
+    }
+
+    td:last-child,
+    th:last-child {
+        border-radius: 0;
+    }
+
+    .name {
+        align-self: self-end;
+    }
+}
