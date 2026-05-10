@@ -1,73 +1,33 @@
-# React + TypeScript + Vite
+# 🚀 CryptoSearch Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time cryptocurrency search application built with **React**, **TypeScript**, and **Vite**, consuming data from the public **CoinCap API**.
 
-Currently, two official plugins are available:
+## 📋 About the Project
+CryptoSearch allows users to track market data for the top cryptocurrencies and search for specific assets. The application features a clean UI, dynamic routing for asset details, and precise financial data formatting to provide a professional user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack
+*   **React 19** (Hooks: `useState`, `useEffect`, `useParams`, `useNavigate`)
+*   **Vite** (Next-generation frontend tooling)
+*   **TypeScript** (Strict typing for robust development)
+*   **React Router Dom v7** (Declarative routing and navigation)
+*   **React Icons** (Bootstrap Icons set)
+*   **CSS Modules** (Scoped and maintainable styling)
 
-## React Compiler
+## ⚙️ Key Features
+- [x] **Market Dashboard**: Displays the top 10 cryptocurrencies on the home page.
+- [x] **Smart Search**: Search for coins by name or symbol (e.g., Bitcoin or BTC).
+- [x] **Dynamic Routing**: Dedicated detail pages for each coin using URL parameters.
+- [x] **Data Formatting**: Professional display of Market Cap, Supply, and Prices using the `Intl.NumberFormat` API.
+- [x] **Error Handling**: Automatic redirection to the Home page if a cryptocurrency is not found.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/cryptoSearch_project.git](https://github.com/your-username/cryptoSearch_project.git)
